@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<script src="resources/jquery.js"></script>
+<script src="resources/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="resources/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+<link href="resources/jquery-ui-1.11.4.custom/jquery-ui.css"
+	rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1 id="j">Titulo antigo</h1>
+	<p id="teste">TESTE</p>
+	<a id="outro" href="#" onClick="testeajax()">Clique aqui</a>
+	<a id="outro2" href="#" onClick="agora()">teste agora</a>
+	<a href=""
+		onClick="document.getElementById('teste').style.background='red';">trocar
+		cor do paragrafo - cor vermelho</a>
+	<input id='dataNascimento' />
+	<script> $("#dataNascimento").datepicker();</script>
+
+</body>
+<script>
+    function testeajax() {
+      $.get("./testeajax", function(resposta) {
+        // selecionando o elemento html através da 
+        // ID e alterando o HTML dele 
+        //alert(resposta);
+        $("#teste").html(resposta);
+        alert(resposta);
+        
+      });
+    }
+	function agora(){
+	    $.ajax({
+	    	url: "./testeajax",
+	    	type: 'GET',
+	    	success: function(s){
+	    		$("#teste").html(s);
+				alert(s);
+		    	}
+	    	
+	    	});
+    	}
+  </script>
+</html>
