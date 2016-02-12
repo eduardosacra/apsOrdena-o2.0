@@ -2,8 +2,6 @@ package br.com.ordenacao.modelo.metodos;
 
 import javax.swing.JOptionPane;
 
-import br.com.ordenacao.controler.ControleModelo;
-import br.com.ordenacao.visao.Visao;
 
 public class BubbleSort extends Ordenacao {
 	
@@ -20,10 +18,10 @@ public class BubbleSort extends Ordenacao {
 		 // coloca em ordem crescente (1,2,3,4,5...)  
 		  for(int x = 0; x < vetor.length; x++ )
 		  {	this.comparacao+=1;
-		    for(int y = x + 1; y < vetor.length; y++ ) // sempre 1 elemento à frente
+		    for(int y = x + 1; y < vetor.length; y++ ) // sempre 1 elemento ï¿½ frente
 		    {
 		    	this.comparacao+=1;
-		      // se o (x > (x+1)) então o x passa pra frente (ordem crescente)
+		      // se o (x > (x+1)) entï¿½o o x passa pra frente (ordem crescente)
 		      if ( vetor[x] > vetor[y] )
 		      {
 		        int aux = vetor[x];
@@ -33,7 +31,7 @@ public class BubbleSort extends Ordenacao {
 		         this.movimentacao+=1;
 		      }
 		    }
-		  } // fim da ordenação
+		  } // fim da ordenaï¿½ï¿½o
 		  
 	     return vetor;
 	}
