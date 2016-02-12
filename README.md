@@ -1,3 +1,3 @@
-# apsOrdenacao 2.0
+# apsOrdenacao 1-5
 
 Projeto universitário.
