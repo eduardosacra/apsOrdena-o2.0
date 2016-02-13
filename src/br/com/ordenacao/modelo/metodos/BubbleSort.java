@@ -1,70 +1,42 @@
 package br.com.ordenacao.modelo.metodos;
 
-import javax.swing.JOptionPane;
 
-
-public class BubbleSort extends Ordenacao {
-	
-
-	@Override
-	public int[] getOrdenar(int[] vetor) {
-		this.comparacao = 0;
-		this.movimentacao = 0;		
-		
-		return bubleSort(vetor);
-	}
-	
-	private int[] bubleSort(int[]vetor) {
-		 // coloca em ordem crescente (1,2,3,4,5...)  
-		  for(int x = 0; x < vetor.length; x++ )
-		  {	this.comparacao+=1;
-		    for(int y = x + 1; y < vetor.length; y++ ) // sempre 1 elemento � frente
-		    {
-		    	this.comparacao+=1;
-		      // se o (x > (x+1)) ent�o o x passa pra frente (ordem crescente)
-		      if ( vetor[x] > vetor[y] )
-		      {
-		        int aux = vetor[x];
-		         vetor[x] = vetor[y];
-		         vetor[y] = aux;
-		         this.comparacao+=1;
-		         this.movimentacao+=1;
-		      }
-		    }
-		  } // fim da ordena��o
-		  
-	     return vetor;
-	}
-	 
-	@Override
-	public String getNameMetodo() {
-
-		return "BubbleSort";
-	}
+public class BubbleSort extends Sort {
+	int aux = 0; int i = 0, comp =0, mov=0;
+	int[]vet;
 
 	@Override
-	public long getComparacao() {
-		// TODO Auto-generated method stub
-		return this.comparacao;
-	}
-	
-	@Override
-	public long getMovimentacao() {
-		return movimentacao;
-	}
-}
-/*
- * for (int i = vetor.length; i >= 1; i--) {
-			this.comparacao += 1;
-			for (int j = 1; j < i; j++) {
-				this.comparacao += 1;
-				this.movimentacao+=1;
-				if (vetor[j - 1] > vetor[j]) {
-					int aux = vetor[j];
-					vetor[j] = vetor[j - 1];
-					vetor[j - 1] = aux;
-				}
+	public Resultado sort(int[] vetor) {
+		this.vet = vetor;
+		int vlenth = this.vet.length;
+		long tInicial = System.currentTimeMillis();
+		for(i = 0; i<vlenth; i++){
+			for(int j = 0; j<vlenth-1; j++){
+				comp += 1;//contabiliza uma comparacao
+				if(vet[j] > vet[j + 1]){
+					mov+=1;//contabiliza uma movimentacao
+					aux = vet[j];
+					vet[j] = vet[j+1];
+					vet[j+1] = aux; }
+				} 
 			}
-			
-		}
-*/
+		long tFinal = System.currentTimeMillis();
+		long tGasto = tFinal - tInicial;//Tempo gasto para ordenar
+		
+		Resultado result = new Resultado();
+		result.setMetodoOrdenacao("BubleSort");
+		result.setQtdCompacao(this.comp);
+		result.setQtdMovimentacao(this.mov);
+		result.setTempoGasto(tGasto);
+		result.setTamanhoVetor(vlenth);
+		result.setVetorUsado("Falto logica pra isso");// TODO falta implementar carregar o nome do vetor.
+		return result;
+	}
+
+	@Override
+	public String nomeVetor() {
+		return "Bubble Sort";
+		
+	}
+
+}
