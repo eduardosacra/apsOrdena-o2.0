@@ -2,7 +2,7 @@ package br.com.ordenacao.modelo.vetor;
 
 import java.util.Random;
 
-public class QuaseOrdenado implements Vetor {
+public class QuaseOrdenado extends Vetor {
 
 	@Override
 	public int[] getVetor(int tamanho) {
@@ -13,7 +13,7 @@ public class QuaseOrdenado implements Vetor {
 			vetor[i] = i;
 		}
 		
-		//Aqui bagunço algumas posiçoes
+		//Aqui bagunï¿½o algumas posiï¿½oes
 		Random rd1 = new Random();
 		int aux = 0;
 		int indice2 = 0;

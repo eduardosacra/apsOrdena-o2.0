@@ -5,7 +5,7 @@
 <script src="resources/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
 <link href="resources/jquery-ui-1.11.4.custom/jquery-ui.css"
 	rel="stylesheet">
-<head>	
+<head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -18,12 +18,43 @@
 	<a href=""
 		onClick="document.getElementById('teste').style.background='red';">trocar
 		cor do paragrafo - cor vermelho</a>
-		<input type="button" id="bt" value="aperte aqui" name="botao" onclick="testeajax()" >
+	<input type="button" id="bt" value="aperte aqui" name="botao"
+		onclick="testeajax()">
 	<input id='dataNascimento' />
 	<script> $("#dataNascimento").datepicker();</script>
+	<p>teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste teste teste teste teste teste teste teste
+		teste teste teste teste</p>
 
+	<table>
+		<tr>
+			<td id=buble>bublesort</td>
+			<td id=status>Status</td>
+			<td id=tempoGasto>mm:ss,SSS</td>
+			<td><input type="button" name="butao" value="Iniciar"
+				onclick="ordenacao()" /></td>
+		</tr>
+	</table>
+	
 </body>
 <script>
+	function ordenacao(){
+
+		$("#status").html("<img src=resources/carregando.gif>");
+		$("#tempoGasto").html("mm:ss,SSS")
+			$.get("./bublesort?qtd=100000&vetor=Aleatorio",function(resposta){
+				$("#status").html("Pronto");
+				var res = resposta.split(";");
+				$("#tempoGasto").html(res[2]);
+			})
+		}
     function testeajax() {
       $.get("./testeajax", function(resposta) {
         // selecionando o elemento html através da 

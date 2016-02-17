@@ -1,6 +1,6 @@
 package br.com.ordenacao.modelo.vetor;
 
-public class OrdenadoDecrescente implements Vetor {
+public class OrdenadoDecrescente extends Vetor {
 
 	@Override
 	public int[] getVetor(int tamanho) {

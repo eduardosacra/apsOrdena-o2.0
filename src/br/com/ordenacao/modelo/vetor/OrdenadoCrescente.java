@@ -2,7 +2,7 @@ package br.com.ordenacao.modelo.vetor;
 
 import java.util.ArrayList;
 
-public class OrdenadoCrescente implements Vetor {
+public class OrdenadoCrescente extends Vetor {
 
 	@Override
 	public  int[] getVetor(int tamanho) {

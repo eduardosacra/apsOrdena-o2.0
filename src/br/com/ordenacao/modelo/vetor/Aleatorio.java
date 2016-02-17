@@ -2,7 +2,7 @@ package br.com.ordenacao.modelo.vetor;
 
 import java.util.Random;
 
-public class Aleatorio implements Vetor {
+public class Aleatorio extends Vetor {
 
 	
 	private int[] gereVetorAleatorioNaoRepetido(int tamanho) {
