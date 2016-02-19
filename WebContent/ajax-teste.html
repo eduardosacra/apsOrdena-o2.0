@@ -33,26 +33,68 @@
 		teste teste teste teste teste teste teste teste teste teste teste
 		teste teste teste teste</p>
 
-	<table>
+	<table border="1">
+	<tr>
+			<td>Metódo de ordenaçãoa</td>
+			<td>Status</td>
+			<td >Tempo gasto</td>
+		</tr>
 		<tr>
-			<td id=buble>bublesort</td>
-			<td id=status>Status</td>
-			<td id=tempoGasto>mm:ss,SSS</td>
-			<td><input type="button" name="butao" value="Iniciar"
-				onclick="ordenacao()" /></td>
+			<td id=buble>Buble Sort</td>
+			<td id=statusb>Status</td>
+			<td id=tempoGastob>mm:ss,SSS</td>
+			
+		</tr>
+			<tr>
+			<td id=quick>Quick Sort</td>
+			<td id=statusq>Status</td>
+			<td id=tempoGastoq>mm:ss,SSS</td>
+		</tr>
+		</tr>
+			<tr>
+			<td id=instion>Insertion Sort</td>
+			<td id=statusi>Status</td>
+			<td id=tempoGastoi>mm:ss,SSS</td>
 		</tr>
 	</table>
-	
+	<input type="button" name="butao" value="Iniciar"
+				onclick="ordenacao()" />
 </body>
 <script>
 	function ordenacao(){
+		ordenacaob();
+		ordenacaoq();
+		ordenacaoi();
+		}
 
-		$("#status").html("<img src=resources/carregando.gif>");
-		$("#tempoGasto").html("mm:ss,SSS")
-			$.get("./bublesort?qtd=100000&vetor=Aleatorio",function(resposta){
-				$("#status").html("Pronto");
+	function ordenacaoi(){
+
+		$("#statusi").html("<img src=resources/carregando.gif>");
+		$("#tempoGastoi").html("mm:ss,SSS")
+			$.get("./insertionSort?qtd=10000&vetor=Aleatorio",function(resposta){
+				$("#statusi").html("Pronto");
 				var res = resposta.split(";");
-				$("#tempoGasto").html(res[2]);
+				$("#tempoGastoi").html(res[2]);
+			})
+		}
+	function ordenacaob(){
+
+		$("#statusb").html("<img src=resources/carregando.gif>");
+		$("#tempoGastob").html("mm:ss,SSS")
+			$.get("./bublesort?qtd=100000&vetor=Aleatorio",function(resposta){
+				$("#statusb").html("Pronto");
+				var res = resposta.split(";");
+				$("#tempoGastob").html(res[2]);
+			})
+		}
+	function ordenacaoq(){
+
+		$("#statusq").html("<img src=resources/carregando.gif>");
+		$("#tempoGastoq").html("mm:ss,SSS")
+			$.get("./quicksort?qtd=300000&vetor=Aleatorio",function(resposta){
+				$("#statusq").html("Pronto");
+				var res = resposta.split(";");
+				$("#tempoGastoq").html(res[2]);
 			})
 		}
     function testeajax() {

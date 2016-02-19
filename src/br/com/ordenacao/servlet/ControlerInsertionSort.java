@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.ordenacao.modelo.metodos.BubbleSort;
+import br.com.ordenacao.modelo.metodos.InsertionSort;
 import br.com.ordenacao.modelo.metodos.Resultado;
 import br.com.ordenacao.modelo.vetor.Vetor;
 
-@WebServlet("/bublesort")
-public class ControleBubleSort extends HttpServlet {
+@WebServlet("/insertionSort")
+public class ControlerInsertionSort extends HttpServlet {
 
+	// TODO retirar depois
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO retirar depois
-		System.out.println("Iniciando processo de ordenação buble sort");
+		System.out.println("Iniciando processo de ordenação Insertion Sort");
 		String vetor = "br.com.ordenacao.modelo.vetor." + request.getParameter("vetor");
 		Class cls;
 		try {
@@ -32,27 +33,24 @@ public class ControleBubleSort extends HttpServlet {
 
 			int qtd = Integer.parseInt(request.getParameter("qtd"));
 
-			BubbleSort buble = new BubbleSort();
-		Resultado result=	buble.sort(vet.getVetor(qtd));
-		String resultadoOK=result.getMetodoOrdenacao()+";"+result.getTamanhoVetor()+";"+formataHora(new Date(result.getTempoGasto()));
-		System.out.println(resultadoOK);
-		response.getWriter().write(resultadoOK);
-		response.setStatus(200);
+			InsertionSort buble = new InsertionSort();
+			Resultado result = buble.sort(vet.getVetor(qtd));
+			String resultadoOK = result.getMetodoOrdenacao() + ";" + result.getTamanhoVetor() + ";"
+					+ formataHora(new Date(result.getTempoGasto()));
+			System.out.println(resultadoOK);
+			response.getWriter().write(resultadoOK);
+			response.setStatus(200);
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	
+
 	}
-	
+
 	public static String formataHora(Date data) {
 		SimpleDateFormat dataFormatada = new SimpleDateFormat("mm:ss,SSS"); // HH:mm:ss
 		return dataFormatada.format(data);
