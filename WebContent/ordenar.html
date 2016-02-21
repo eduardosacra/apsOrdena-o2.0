@@ -1,10 +1,119 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teste de ordenação</title>
+<script src="resources/jquery.js"></script>
+<script src="resources/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+<script src="resources/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
+<link href="resources/jquery-ui-1.11.4.custom/jquery-ui.css"
+	rel="stylesheet">
 </head>
 <body>
+	<h1>Teste de ordenação</h1>
+	<label>Qual vertor quer usar no teste 
+	<select id="vetor">
+			<option value="Aleatorio">Aleatório</option>
+			<option value="OrdenadoCrescente">Ordenado crescente</option>
+			<option value="OrdenadoDecrescente">Ordenado Decrescente</option>
+			<option value="QuaseOrdenado">Parcialmente desordenado</option>
+	</select>
+	</label>
+	<br />
+	<label> Quantos elementos: 
+	<select id="qtd">
+			<option value="1000">1.000</option>
+			<option value="10000">10.000</option>
+			<option value="100000">100.000</option>
+			<option value="1000000">1.000.000</option>
+			<option value="1000000000">1.000.000.000</option>
+	</select>
+	</label>
+	<input type="button" name="butao" value="Iniciar Ordenação" onclick="ordenacao()" />
+	<table border="1">
+		<tr>
+			<td>Metódo de ordenaçãoa</td>
+			<td>Status</td>
+			<td>Tempo gasto</td>
+			<td>Qtd. Comparacao</td>
+			<td>Qtd. Movimentação</td>
+		</tr>
+		<tr>
+			<td id=buble>Buble Sort</td>
+			<td id=statusb>Status</td>
+			<td id=tempoGastob>mm:ss,SSS</td>
+			<td id=qtdComparacaob></td>
+			<td id=qtdMovimentacaob></td>
 
+		</tr>
+		<tr>
+			<td id=quick>Quick Sort</td>
+			<td id=statusq>Status</td>
+			<td id=tempoGastoq>mm:ss,SSS</td>
+			<td id=qtdComparacaoq></td>
+			<td id=qtdMovimentacaoq></td>
+		</tr>
+		</tr>
+		<tr>
+			<td id=instion>Insertion Sort</td>
+			<td id=statusi>Status</td>
+			<td id=tempoGastoi>mm:ss,SSS</td>
+			<td id=qtdComparacaoi></td>
+			<td id=qtdMovimentacaoi></td>
+		</tr>
+	</table>
+</body>
+<script>
+	function ordenacao(){
+		ordenacaob();
+		ordenacaoq();
+		ordenacaoi();
+		}
+
+	function ordenacaoi(){
+	var vetor = document.getElementById("vetor");
+	var qtd = document.getElementById("qtd");
+		$("#statusi").html("<img src=resources/carregando.gif>");
+		$("#tempoGastoi").html("mm:ss,SSS");
+		$("#qtdComparacaoi").html(0);
+		$("#qtdMovimentacaoi").html(0);
+			$.get("./insertionSort?qtd="+qtd.options[vetor.selectedIndex].value+"&vetor="+vetor.options[vetor.selectedIndex].value,function(resposta){
+				$("#statusi").html("Pronto");
+				var res = resposta.split(";");
+				$("#tempoGastoi").html(res[2]);
+				$("#qtdComparacaoi").html(res[3]);
+				$("#qtdMovimentacaoi").html(res[4]);
+			})
+		}
+	function ordenacaob(){
+		var vetor = document.getElementById("vetor");
+		var qtd = document.getElementById("qtd");
+		$("#statusb").html("<img src=resources/carregando.gif>");
+		$("#tempoGastob").html("mm:ss,SSS");
+		$("#qtdComparacaob").html("0");
+		$("#qtdMovimentacaob").html("0");
+			$.get("./bublesort?qtd="+qtd.options[vetor.selectedIndex].value+"&vetor="+vetor.options[vetor.selectedIndex].value,function(resposta){
+				$("#statusb").html("Pronto");
+				var res = resposta.split(";");
+				$("#tempoGastob").html(res[2]);
+				$("#qtdComparacaob").html(res[3]);
+				$("#qtdMovimentacaob").html(res[4]);
+			})
+		}
+	function ordenacaoq(){
+		var vetor = document.getElementById("vetor");
+		var qtd = document.getElementById("qtd");
+		$("#statusq").html("<img src=resources/carregando.gif>");
+		$("#tempoGastoq").html("mm:ss,SSS");
+		$("#qtdComparacaoq").html(0);
+		$("#qtdMovimentacaoq").html(0);
+			$.get("./quicksort?qtd="+qtd.options[vetor.selectedIndex].value+"&vetor="+vetor.options[vetor.selectedIndex].value,function(resposta){
+				$("#statusq").html("Pronto");
+				var res = resposta.split(";");
+				$("#tempoGastoq").html(res[2]);
+				$("#qtdComparacaoq").html(res[3]);
+				$("#qtdMovimentacaoq").html(res[4]);
+			})
+		}
+  </script>
 </body>
 </html>

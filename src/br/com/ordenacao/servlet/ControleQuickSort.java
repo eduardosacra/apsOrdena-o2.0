@@ -37,8 +37,7 @@ public class ControleQuickSort extends HttpServlet {
 
 			QuickSort buble = new QuickSort();
 			Resultado result = buble.sort(vet.getVetor(qtd));
-			String resultadoOK = result.getMetodoOrdenacao() + ";" + result.getTamanhoVetor() + ";"
-					+ formataHora(new Date(result.getTempoGasto()));
+			String resultadoOK=result.getMetodoOrdenacao()+";"+result.getTamanhoVetor()+";"+formataHora(new Date(result.getTempoGasto()))+";"+result.getQtdCompacao()+";"+result.getQtdMovimentacao();
 //			JSONObject j = new JSONObject();
 //			j.put("tempo_gasto", result.getTempoGasto());
 //			j.put("tempoformatado", formataHora(new Date(result.getTempoGasto())));

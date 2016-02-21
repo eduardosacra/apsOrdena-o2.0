@@ -34,7 +34,7 @@ public class ControleBubleSort extends HttpServlet {
 
 			BubbleSort buble = new BubbleSort();
 		Resultado result=	buble.sort(vet.getVetor(qtd));
-		String resultadoOK=result.getMetodoOrdenacao()+";"+result.getTamanhoVetor()+";"+formataHora(new Date(result.getTempoGasto()));
+		String resultadoOK=result.getMetodoOrdenacao()+";"+result.getTamanhoVetor()+";"+formataHora(new Date(result.getTempoGasto()))+";"+result.getQtdCompacao()+";"+result.getQtdMovimentacao();
 		System.out.println(resultadoOK);
 		response.getWriter().write(resultadoOK);
 		response.setStatus(200);

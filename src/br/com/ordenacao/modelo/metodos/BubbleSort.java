@@ -10,16 +10,21 @@ public class BubbleSort extends Sort {
 		this.vet = vetor;
 		int vlenth = this.vet.length;
 		long tInicial = System.currentTimeMillis();
-		for(i = 0; i<vlenth; i++){
+		boolean troca = true;
+		while (troca) {
+			troca =false;
 			for(int j = 0; j<vlenth-1; j++){
 				comp += 1;//contabiliza uma comparacao
 				if(vet[j] > vet[j + 1]){
 					mov+=1;//contabiliza uma movimentacao
 					aux = vet[j];
 					vet[j] = vet[j+1];
-					vet[j+1] = aux; }
+					vet[j+1] = aux;
+					troca =true;
+					}				
 				} 
 			}
+
 		long tFinal = System.currentTimeMillis();
 		long tGasto = tFinal - tInicial;//Tempo gasto para ordenar
 		
